@@ -6,6 +6,7 @@ import com.doza.entity.person.PersonRole;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.Objects;
 import java.util.Random;
 
 public class GeneratorPerson {
@@ -52,8 +53,7 @@ public class GeneratorPerson {
     };
 
 
-    public void createTenPerson() {
-        for (int i = 0; i < 10; i++) {
+    public Object createPerson() {
             PersonDao personDao = PersonDao.getInstance();
             Person person = new Person();
 
@@ -65,8 +65,9 @@ public class GeneratorPerson {
             person.setRole(PersonRole.PERSONAL);//TODO сделать рандомную генерацию
 
             Person savedPerson = personDao.savePerson(person);
+            return savedPerson;
         }
-    }
+
 
 
     private static String generateRandomPersonName() {
